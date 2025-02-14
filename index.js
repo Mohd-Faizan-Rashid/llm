@@ -2,6 +2,8 @@
 const express = require('express');
 const axios = require('axios');
 const { HfInference } = require('@huggingface/inference');
+const cors = require('cors');
+app.use(cors());
 
 const app = express();
 app.use(express.json());

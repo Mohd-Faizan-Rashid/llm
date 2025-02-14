@@ -1,3 +1,14 @@
-"scripts": {
-  "start": "node index.js"
+{
+  "name": "llama-proxy",
+  "version": "1.0.0",
+  "description": "Node.js and Express.js proxy for Llama and SerpAPI",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "axios": "^1.4.0",
+    "@huggingface/inference": "^1.0.0"
+  }
 }

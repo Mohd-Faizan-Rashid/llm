@@ -9,7 +9,7 @@ app.use(cors());
 const HF_TOKEN = process.env.HF_TOKEN;
 const MODEL_NAME = "meta-llama/Llama-2-7b-hf"; // Change to your model
 
-const hf = new HfInference(HF_TOKEN);
+const hf = HfInference(HF_TOKEN);
 
 // Endpoint for Flutter Flow
 app.get('/proxy', async (req, res) => {
@@ -17,7 +17,7 @@ app.get('/proxy', async (req, res) => {
         const serpResponse = await axios.get("https://serpapi.com/search", {
             params: { ...req.query, api_key: process.env.SERPAPI_KEY },
         });
-        res.json(serpResponse.data);
+
         const serpOutput = serpResponse.data.organic_results[0].snippet || "No result found";
 
         // Step 2: Send SerpAPI Output to Llama Model
@@ -28,7 +28,7 @@ app.get('/proxy', async (req, res) => {
         });
 
         // Step 3: Return Llama Output to Flutter Flow
-        res.json({ result: hfResponse.generated_text });
+        res.json( hfResponse.generated_text );
     } catch (error) {
     res.status(500).json({ error: error.message });
     }

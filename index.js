@@ -1,5 +1,4 @@
-// index.js
-require('dotenv').config();
+
 const express = require('express');
 const axios = require('axios');
 const { HfInference } = require('@huggingface/inference');

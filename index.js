@@ -18,7 +18,7 @@ app.get('/proxy', async (req, res) => {
             params: { ...req.query, api_key: process.env.SERPAPI_KEY },
         });
 
-        const serpOutput = serpResponse.data.organic_results[0].snippet || "No result found";
+        const serpOutput = serpResponse.data.organic_results[0].snippet || ...req.query;
 
         // Step 2: Send SerpAPI Output to Llama Model
         const hfResponse = await hf.textGeneration({

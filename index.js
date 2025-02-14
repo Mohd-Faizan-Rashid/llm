@@ -1,4 +1,4 @@
-
+ 
 const express = require('express');
 const axios = require('axios');
 const { HfInference } = require('@huggingface/inference');
@@ -9,7 +9,7 @@ app.use(cors());
 const HF_TOKEN = process.env.HF_TOKEN;
 const MODEL_NAME = "meta-llama/Llama-2-7b-hf"; // Change to your model
 
-const hf = HfInference(HF_TOKEN);
+const hf = new HfInference(HF_TOKEN);
 
 // Endpoint for Flutter Flow
 app.get('/proxy', async (req, res) => {

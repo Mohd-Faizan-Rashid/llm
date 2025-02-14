@@ -17,7 +17,7 @@ app.get('/proxy', async (req, res) => {
         const serpResponse = await axios.get("https://serpapi.com/search", {
             params: { ...req.query, api_key: process.env.SERPAPI_KEY },
         });
-        res.json(response.data);
+        res.json(serpResponse.data);
         const serpOutput = serpResponse.data.organic_results[0].snippet || "No result found";
 
         // Step 2: Send SerpAPI Output to Llama Model
